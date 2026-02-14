@@ -47,4 +47,4 @@ int minTime(vector<int>& arr, int k) {
     return result;
   }
 };
-
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/85d43951-e6b7-48e2-a414-3ef858d44231" />
