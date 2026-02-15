@@ -1,0 +1,27 @@
+DAY2>
+Chocolate Distribution Problem:
+class Solution {
+  public:
+    int findMinDiff(vector<int>& a, int m) {
+        // code here
+        int n = a.size();
+        int mini = INT_MAX;
+        sort(a.begin(),a.end());
+        int l =0,r =0;
+        while(r<n){
+            int len = r-l+1;
+            if(len<m){
+              r++;  
+            } 
+            else if(len==m){
+                mini = min(mini, a[r]-a[l]);
+                r++;
+                l++;
+            }
+          
+        }
+        return mini;
+    }
+};
+TIME COMPLIXITY - 0(NLogN) 
+SPACE COMPLEXITY - 0(1)
