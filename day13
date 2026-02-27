@@ -1,0 +1,27 @@
+int countSubmatrices(vector<vector<int>>& mat, int X) {
+    int rows = mat.size(), cols = mat[0].size();
+    int count = 0;
+
+    for (int L = 0; L < cols; L++) {
+        vector<int> rowSum(rows, 0);
+        for (int R = L; R < cols; R++) {
+            // Step 1: Accumulate row sums between column L and R
+            for (int i = 0; i < rows; i++) {
+                rowSum[i] += mat[i][R];
+            }
+
+            // Step 2: Use Hash Map to find subarrays with sum X in rowSum
+            unordered_map<int, int> mp;
+            mp[0] = 1; // Base case
+            int currSum = 0;
+            for (int val : rowSum) {
+                currSum += val;
+                if (mp.find(currSum - X) != mp.end()) {
+                    count += mp[currSum - X];
+                }
+                mp[currSum]++;
+            }
+        }
+    }
+    return count;
+}
